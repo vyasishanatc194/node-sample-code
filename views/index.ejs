@@ -1,0 +1,27 @@
+<!-- Set Header In express js -->
+<% include partials/header %>
+    <h1>
+        <%= title %>
+    </h1>
+ 
+    <!-- Form for Add User   -->
+    <form method="POST" action="/users/add">
+        <label for="fname">First Name</label>
+        <input name="first_name" id="fname" value=<% if(old) { %> <%= old.first_name  %> <% } %> ><br/>
+        <label for="lname">Last Name</label>
+        <input name="last_name" id="lname" value=<% if(old) { %> <%=old.last_name  %> <% } %> ><br/>
+        <label for="email">Email</label>
+        <input name="email" id="email" value=<% if(old) { %> <%=old.email  %> <% } %> ><br/>
+        <input type="submit" /> 
+        
+    </form>
+    
+    <!-- List For Users -->
+    <ul>
+        <% users.forEach(function(user){ %>
+            <li><%=user.first_name %> <%=user.last_name %> - <%=user.email %> - <a href="#"  class="deleteUser" data-id="<%=user._id%>" >Delete</a></li>
+        <% }) %>
+    </ul>
+<!-- Set Footer In express js -->
+<% include partials/footer %>
+
